@@ -1,4 +1,4 @@
-import { searchAction, useAppDispatch, useAppSelector } from '../../services';
+import { useAppDispatch, useAppSelector } from '../../services';
 import { selectFilter, selectSearch } from '../../services/selectors';
 import Grid from '@mui/material/Grid';
 import CircularProgress from '@mui/material/CircularProgress';

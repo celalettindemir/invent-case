@@ -16,11 +16,13 @@ const detailReducer = (state = initialState, action: any) => {
         case DETAIL.SUCCEED:
             return {
                 ...state,
+                isLoading: false,
                 data: action.payload.data.data
             }
         case DETAIL.FAILED:
             return {
                 ...state,
+                isLoading: false,
                 errorMessage: action.payload.errorMessage
             }
         default:

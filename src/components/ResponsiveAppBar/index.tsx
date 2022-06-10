@@ -78,7 +78,7 @@ const ResponsiveAppBar = () => {
         handleSearch();
     };
     const handleYearChange = (event: SelectChangeEvent) => {
-        setType(event.target.value as string);
+        setSearchYear(event.target.value as string);
         handleSearch();
     };
     const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {

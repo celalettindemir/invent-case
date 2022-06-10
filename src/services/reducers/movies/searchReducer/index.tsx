@@ -22,6 +22,7 @@ const searchReducer = (state = initialState, action: any) => {
         case SEARCH.FAILED:
             return {
                 ...state,
+                isLoading: false,
                 errorMessage: action.payload.errorMessage
             }
         default:

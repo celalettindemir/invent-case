@@ -1,6 +1,7 @@
-import { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+
+import { useNavigate } from "react-router-dom";
 
 import './Poster.scss'
 
@@ -17,8 +18,10 @@ type Props = {
 
 const Poster = ({ movie }: Props) => {
 
+    let navigate = useNavigate();
+
     const movieDetail = () => {
-        console.log(movie.imdbID);
+        navigate(`/detail/${movie.imdbID}`);
     };
 
     return (

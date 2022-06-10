@@ -17,7 +17,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 import './ResponsiveAppBar.scss'
-import { searchAction, useAppDispatch } from '../../services';
+import { useAppDispatch } from '../../services';
 import filterAction from '../../services/actions/movies/filterAction';
 
 const pages = ['Anasayfa'];
@@ -69,11 +69,17 @@ const ResponsiveAppBar = () => {
 
     const [type, setType] = useState('');
     const [searchText, setSearchText] = useState('');
+    const [searchYear, setSearchYear] = useState('');
 
     const dispatch = useAppDispatch();
 
-    const handleChange = (event: SelectChangeEvent) => {
+    const handleTypeChange = (event: SelectChangeEvent) => {
         setType(event.target.value as string);
+        handleSearch();
+    };
+    const handleYearChange = (event: SelectChangeEvent) => {
+        setType(event.target.value as string);
+        handleSearch();
     };
     const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -83,10 +89,11 @@ const ResponsiveAppBar = () => {
         setAnchorElNav(null);
     };
     const handleSearch = () => {
-        dispatch(filterAction({ s: searchText, type: type, page: 1 }));
+        dispatch(filterAction({ s: searchText, type: type, page: 1, y: searchYear }));
     };
-
-
+    const getYears = () => {
+        return Array.from(Array(50).keys()).map((value) => 2022 - value);
+    };
     return (
         <AppBar id='appbar' position="static">
             <Container maxWidth="xl">
@@ -164,8 +171,27 @@ const ResponsiveAppBar = () => {
                     >
                         LOGO
                     </Typography>
+
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     </Box>
+                    <Box sx={{ minWidth: 120, }}>
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">Yıl</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={searchYear}
+                                label="Yil"
+                                onChange={handleYearChange}
+                            >{getYears().map((year: number) => (
+                                <MenuItem key={year} value={year}>
+                                    {year}
+                                </MenuItem>
+                            ))}
+                            </Select>
+                        </FormControl>
+                    </Box>
+
                     <Box sx={{ minWidth: 120, }}>
                         <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">Tür</InputLabel>
@@ -174,7 +200,7 @@ const ResponsiveAppBar = () => {
                                 id="demo-simple-select"
                                 value={type}
                                 label="Tür"
-                                onChange={handleChange}
+                                onChange={handleTypeChange}
                             >
                                 <MenuItem value={"movie"}>Film</MenuItem>
                                 <MenuItem value={"series"}>Dizi</MenuItem>

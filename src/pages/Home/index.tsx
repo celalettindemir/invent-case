@@ -33,10 +33,10 @@ const Home = () => {
     return (
         <Layout>
 
-            <Grid sx={{ flexGrow: 1 }} container spacing={3}>
+            <Grid sx={{ flexGrow: 1 }} container spacing={1}>
                 <Grid item xs={2} ></Grid>
                 <Grid item xs={8} sx={{ bgcolor: '#EDE4E3' }}>
-                    <Grid container justifyContent="center" spacing={3}>
+                    <Grid container justifyContent="center" spacing={1}>
                         {isLoading() ? (search.data.Search.map((value: any, index: number) => (
                             <Poster movie={{ ...value, key: index }} />
                         ))) : (<Box sx={{ display: 'flex' }}><CircularProgress /></Box>)

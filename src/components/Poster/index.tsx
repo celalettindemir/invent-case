@@ -16,26 +16,36 @@ type Props = {
 };
 
 const Poster = ({ movie }: Props) => {
-    const [spacing, setSpacing] = useState(2);
+
+    const movieDetail = () => {
+        console.log(movie.imdbID);
+    };
+
     return (
-        <Grid key={movie.key} sx={{
-            backgroundColor: (theme) =>
-                theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        }} item>
+        <Grid key={movie.key} item>
             <Paper
+                onClick={movieDetail}
                 sx={{
-                    height: 200,
-                    width: 160,
-                    backgroundImage: `url(${movie.Poster})`,
-                    backgroundSize: '100% 100%',
-                }}
-            >
+                    borderRadius: '10px',
+                    padding: '5px',
+                    backgroundColor: (theme) =>
+                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                }} >
+                <Paper
+                    sx={{
+                        height: 200,
+                        width: 160,
+                        backgroundImage: `url(${movie.Poster})`,
+                        backgroundSize: '100% 100%',
+                    }}
+                >
 
+                </Paper>
+                <div className='title'>{movie.Title}</div>
+                <span className='year'>{movie.Year}</span><br />
+
+                <span className='imdbId'>{movie.imdbID}</span>
             </Paper>
-            <div className='title'>{movie.Title}</div>
-            <span className='year'>{movie.Year}</span><br />
-
-            <span className='imdbId'>{movie.imdbID}</span>
         </Grid >
     )
 }

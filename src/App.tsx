@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import { Provider } from 'react-redux'
+import { store } from './services/store'
+import Router from './routes'
+import { searchAction, useAppSelector } from './services';
+import filterAction from './services/actions/movies/filterAction';
 
-function App() {
+
+store.dispatch(filterAction(store.getState().filter));
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} id="app-logo" className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <Router />
+    </Provider>
+  )
 }
 
-export default App;
+export default App

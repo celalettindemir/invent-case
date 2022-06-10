@@ -1,0 +1,13 @@
+export const DETAIL = {
+    ATTEMPT: 'DETAIL_ATTEMPT',
+    SUCCEED: 'DETAIL_SUCCEED',
+    FAILED: 'DETAIL_FAILED'
+}
+export const SEARCH = {
+    ATTEMPT: 'SEARCH_ATTEMPT',
+    SUCCEED: 'SEARCH_SUCCEED',
+    FAILED: 'SEARCH_FAILED'
+}
+export const FILTER = {
+    SET: 'FILTER_SET'
+}

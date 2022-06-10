@@ -1,5 +1,10 @@
 # Getting Started with Create React App
 
+## Project Mockups
+
+![HomePage](./drawmockups/HomePage.png)
+![HomePage Active Menu](./drawmockups/Detail.png)
+
 ## `npm start`
 
 Runs the app in the development mode.\
@@ -28,18 +33,26 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## `npm run eject`
+npm install -D typescript
+npm install -D ts-node
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Json Convert
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+-"Title": "High School Musical: The Musical - The Series",
+-"imdbRating": "7.1" /10,
+-"imdbVotes": "6,471",
+-Film süresi "Runtime": "31 min",
+-Tür "Genre": "Comedy, Drama, Musical",
+-Yayın tarihi "Released": "12 Nov 2019",
+-"Year": "2019–", + "Country": "United States"
+-"Writer": "Tim Federle",
+-Filmin konusu "Plot": "The students from the school where the High School Musical films were shot stage a musical production based on the franchise.",
+-Orjinal Dil"Language": "English",
+-"Poster": "https://m.media-amazon.com/images/M/MV5BNWU1N2U5NzMtNDY2YS00YTk3LWIwNjAtNDU2ZGRhZDE1NWI2XkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_SX300.jpg",
+-"imdbID": "tt8510382",
+-"Type": "series",
+-"totalSeasons": "3",
+-"Actors": "Olivia Rodrigo, Joshua Bassett, Matt Cornett",
+-"Director": "N/A",
+-"Awards": "3 wins & 8 nominations",
+-"Response": "True"

@@ -1,33 +1,30 @@
-import { useAppDispatch, useAppSelector } from '../../services';
-import { selectFilter, selectSearch } from '../../services/selectors';
+import { useAppSelector } from '../../services';
+import { selectSearch } from '../../services/selectors';
 import Grid from '@mui/material/Grid';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import { Layout } from '../../components';
 import Poster from '../../components/Poster';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import { useEffect, useState } from 'react';
-import filterAction from '../../services/actions/movies/filterAction';
+import PosterPagination from '../../components/Poster/pagition';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 const Home = () => {
     const search = useAppSelector(selectSearch);
-    const filter = useAppSelector(selectFilter);
-    const [page, setPage] = useState(1);
 
-    useEffect(() => {
-        setPage(filter.page);
-    }, [filter.page]);
-    const dispatch = useAppDispatch();
-    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        setPage(value);
-        dispatch(filterAction({ page: value }))
-    };
-    const isLoading = () => {
-        return !search.isLoading && search.data.Search.length !== 0;
-    }
-    const calculatePages = () => {
-        return Math.floor(search.data.totalResults / 10)
+    const renderPosters = () => {
+        if (!search.isLoading) {
+            if (!search.errorMessage)
+                return (
+                    search.data.Search.map((value: any, index: number) => (
+                        <Grid key={index.toString()} item>
+                            <Poster movie={value} />
+                        </Grid >
+                    ))
+                )
+            else
+                return (
+                    <div>Film Bulunamadı</div>);
+        }
+        else
+            return (<LoadingSpinner />);
     }
     //const dispatch = useAppDispatch();
     return (
@@ -37,18 +34,13 @@ const Home = () => {
                 <Grid item xs={2} ></Grid>
                 <Grid item xs={8} sx={{ bgcolor: '#EDE4E3' }}>
                     <Grid container justifyContent="center" spacing={1}>
-                        {isLoading() ? (search.data.Search.map((value: any, index: number) => (
-                            <Poster movie={{ ...value, key: index }} />
-                        ))) : (<Box sx={{ display: 'flex' }}><CircularProgress /></Box>)
-                        }
+                        {renderPosters()}
                     </Grid>
                 </Grid>
                 <Grid item xs={2} ></Grid>
                 <Grid item xs={2} ></Grid>
                 <Grid item xs={8} container justifyContent="center" sx={{ bgcolor: '#EDE4E3' }}>
-                    <Stack spacing={2} sx={{ p: 2 }}>
-                        <Pagination count={calculatePages()} color="primary" page={page} onChange={handleChange} />
-                    </Stack>
+                    <PosterPagination />
                 </Grid>
             </Grid>
         </Layout>

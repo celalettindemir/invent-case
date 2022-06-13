@@ -9,5 +9,6 @@ export const SEARCH = {
     FAILED: 'SEARCH_FAILED'
 }
 export const FILTER = {
-    SET: 'FILTER_SET'
+    SET: 'FILTER_SET',
+    CLEAR: 'FILTER_CLEAR'
 }

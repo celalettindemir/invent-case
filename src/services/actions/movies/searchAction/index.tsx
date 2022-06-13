@@ -19,7 +19,11 @@ const searchAction = (params: SearchParam) => {
             }
         })
             .then(result => {
-                dispatch(setSuccess(SEARCH.SUCCEED, result))
+                if (result.data.Response === 'True') {
+                    dispatch(setSuccess(SEARCH.SUCCEED, result))
+                }
+                else
+                    dispatch(setFail(SEARCH.FAILED, { errorMessage: true }))
             })
             .catch(error => {
                 dispatch(setFail(SEARCH.FAILED, error))

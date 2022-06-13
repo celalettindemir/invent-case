@@ -10,7 +10,13 @@ const filterReducer = (state = initialState, action: any) => {
         case FILTER.SET:
             return {
                 ...state,
+                page: 1,
                 ...action.payload.data
+            }
+        case FILTER.CLEAR:
+            return {
+                s: state.s,
+                page: 1,
             }
         default:
             return state

@@ -1,8 +1,12 @@
 import { SEARCH } from '../../../../utils/actionType'
 
+
 const initialState = {
     isLoading: false,
-    data: {},
+    data: {
+        Search: [],
+        totalResults: 0
+    },
     errorMessage: false
 }
 
@@ -17,13 +21,18 @@ const searchReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 isLoading: false,
-                data: action.payload.data.data
+                data: action.payload.data.data,
+                errorMessage: false
             }
         case SEARCH.FAILED:
             return {
                 ...state,
                 isLoading: false,
-                errorMessage: action.payload.errorMessage
+                data: {
+                    Search: [],
+                    totalResults: 0
+                },
+                errorMessage: true
             }
         default:
             return state

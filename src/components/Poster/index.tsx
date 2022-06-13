@@ -1,4 +1,3 @@
-import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
 import { useNavigate } from "react-router-dom";
@@ -7,7 +6,6 @@ import './Poster.scss'
 
 type Props = {
     movie: {
-        key: number,
         Title: string,
         Year: string,
         Poster: string,
@@ -25,31 +23,29 @@ const Poster = ({ movie }: Props) => {
     };
 
     return (
-        <Grid key={movie.key} item>
+        <Paper
+            onClick={movieDetail}
+            sx={{
+                borderRadius: '10px',
+                padding: '5px',
+                backgroundColor: (theme) =>
+                    theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+            }} >
             <Paper
-                onClick={movieDetail}
                 sx={{
-                    borderRadius: '10px',
-                    padding: '5px',
-                    backgroundColor: (theme) =>
-                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                }} >
-                <Paper
-                    sx={{
-                        height: 200,
-                        width: 160,
-                        backgroundImage: `url(${movie.Poster})`,
-                        backgroundSize: '100% 100%',
-                    }}
-                >
+                    height: 200,
+                    width: 160,
+                    backgroundImage: `url(${movie.Poster})`,
+                    backgroundSize: '100% 100%',
+                }}
+            >
 
-                </Paper>
-                <div className='title'>{movie.Title}</div>
-                <span className='year'>{movie.Year}</span><br />
-
-                <span className='imdbId'>{movie.imdbID}</span>
             </Paper>
-        </Grid >
+            <div className='title'>{movie.Title}</div>
+            <span className='year'>{movie.Year}</span><br />
+
+            <span className='imdbId'>{movie.imdbID}</span>
+        </Paper>
     )
 }
 

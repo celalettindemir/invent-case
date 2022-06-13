@@ -15,6 +15,6 @@ export const setSuccess = (actionType: any, data: any) => {
 export const setFail = (actionType: any, errorMessage: any) => {
     return {
         type: actionType,
-        payload: { errorMessage }
+        payload: { ...errorMessage }
     }
 }

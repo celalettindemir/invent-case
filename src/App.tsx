@@ -1,8 +1,7 @@
 import { Provider } from 'react-redux'
 import { store } from './services/store'
 import Router from './routes'
-import { searchAction, useAppSelector } from './services';
-import filterAction from './services/actions/movies/filterAction';
+import { filterAction } from './services/actions/movies/filterAction';
 
 
 store.dispatch(filterAction(store.getState().filter));

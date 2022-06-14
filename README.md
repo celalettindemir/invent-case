@@ -5,7 +5,7 @@
 ![HomePage](./drawmockups/HomePage.png)
 ![HomePage Active Menu](./drawmockups/Detail.png)
 
-![Project Video](./project.gif)
+<!-- ![Project Video](./project.gif) -->
 
 ## `npm start`
 

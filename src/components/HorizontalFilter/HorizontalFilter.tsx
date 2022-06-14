@@ -7,9 +7,10 @@ import { useState, MouseEvent } from 'react';
 import { filterAction, filterClearAction } from '../../services/actions/movies/filterAction';
 import { SelectChangeEvent, IconButton, Menu, MenuItem, Fade } from '@mui/material';
 
-import './filter.scss';
-import FilterElement from './filterElement';
-const PostFilter = () => {
+import './HorizontalFilter.scss';
+import { FilterElement } from './FilterElement';
+
+export const HorizontalFilter = () => {
 
 
     const dispatch = useAppDispatch();
@@ -67,29 +68,25 @@ const PostFilter = () => {
                 MenuListProps={{
                     'aria-labelledby': 'fade-button',
                 }}
-                sx={{ flexDirection: 'row' }}
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
                 TransitionComponent={Fade}
             >
                 <FilterElement selectValue={{
+                    title: 'Yıl',
                     selected: searchYear,
                     selectList: getYears(),
                     handleChange: handleYearChange
                 }} />
                 <FilterElement selectValue={{
+                    title: 'Tür',
                     selected: type,
                     selectList: [{ value: "movie", label: "Film" }, { value: "series", label: "Dizi" }, { value: "episode", label: "Sezon" }],
                     handleChange: handleTypeChange
                 }} />
-                <MenuItem>
-
-                </MenuItem>
                 <MenuItem onClick={handleClear}>Clear</MenuItem>
                 <MenuItem onClick={handleSearch}>Uygula</MenuItem>
             </Menu></>
     )
 }
-
-export default PostFilter;

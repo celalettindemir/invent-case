@@ -1,5 +1,5 @@
-import Detail from './Detail'
-import Home from './Home'
+import { Detail } from './Detail'
+import { Home } from './Home'
 
 export {
     Detail,

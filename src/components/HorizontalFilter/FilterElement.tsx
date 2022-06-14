@@ -4,6 +4,7 @@ import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@m
 
 type Props = {
     selectValue: {
+        title: string,
         selected?: string,
         selectList: { value: string, label: string }[]
         handleChange: (event: SelectChangeEvent) => void
@@ -11,7 +12,7 @@ type Props = {
     // children: JSX.Element,
 };
 
-const FilterElement = ({ selectValue }: Props) => {
+export const FilterElement = ({ selectValue }: Props) => {
 
     return (
         <MenuItem>
@@ -25,8 +26,8 @@ const FilterElement = ({ selectValue }: Props) => {
                         label="Tür"
                         onChange={selectValue.handleChange}
                     >
-                        {selectValue.selectList.map((element) => (
-                            <MenuItem value={element.value}>{element.label}</MenuItem>
+                        {selectValue.selectList.map((element, index) => (
+                            <MenuItem key={index} value={element.value}>{element.label}</MenuItem>
                         ))}
                     </Select>
                 </FormControl>
@@ -34,5 +35,3 @@ const FilterElement = ({ selectValue }: Props) => {
         </MenuItem>
     )
 }
-
-export default FilterElement;

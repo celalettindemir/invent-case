@@ -3,10 +3,8 @@
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import { useAppDispatch, useAppSelector } from '../../services';
+import { useAppDispatch } from '../../services';
 import { useEffect, useState } from 'react';
-import { filterAction } from '../../services/actions/movies/filterAction';
-import { selectFilter } from '../../services/selectors';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -50,17 +48,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         },
     },
 }));
-const PostSearch = () => {
+type Props = {
+    filter: {
+        searchText: string,
+        filterAction: (dispatch: any) => void
+    },
+}
+export const SearchBar = ({ filter }: Props) => {
 
-    const filter = useAppSelector(selectFilter);
     const dispatch = useAppDispatch();
-    const [searchText, setSearchText] = useState('');
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
-        setSearchText(filter.s);
-    }, [filter.s]);
+        setSearch(filter.searchText);
+    }, [filter.searchText]);
     const handleSearch = () => {
-        dispatch(filterAction({ s: searchText }));
+        dispatch(filter.filterAction({ s: search }));
     };
     return (
         <Search>
@@ -69,13 +72,11 @@ const PostSearch = () => {
             </SearchIconWrapper>
             <StyledInputBase
                 placeholder="Search…"
-                value={searchText}
+                value={search}
                 inputProps={{ 'aria-label': 'search' }}
-                onChange={(e) => setSearchText(e.target.value)}
+                onChange={(e) => setSearch(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
             />
         </Search>
     )
 }
-
-export default PostSearch;

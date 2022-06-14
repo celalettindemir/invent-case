@@ -1,5 +1,5 @@
 import './layout.scss'
-import ResponsiveAppBar from '../../ResponsiveAppBar';
+import { ResponsiveAppBar } from '../../ResponsiveAppBar';
 
 const Layout = ({ children }: any) => {
     return (

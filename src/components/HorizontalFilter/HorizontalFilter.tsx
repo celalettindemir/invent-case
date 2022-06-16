@@ -50,7 +50,6 @@ export const HorizontalFilter = () => {
     };
     return (
         <>
-
             <IconButton
                 size="large"
                 id="fade-button"
@@ -74,19 +73,19 @@ export const HorizontalFilter = () => {
                 TransitionComponent={Fade}
             >
                 <FilterElement selectValue={{
-                    title: 'Yıl',
+                    title: 'Year',
                     selected: searchYear,
                     selectList: getYears(),
                     handleChange: handleYearChange
                 }} />
                 <FilterElement selectValue={{
-                    title: 'Tür',
+                    title: 'Type',
                     selected: type,
                     selectList: [{ value: "movie", label: "Film" }, { value: "series", label: "Dizi" }, { value: "episode", label: "Sezon" }],
                     handleChange: handleTypeChange
                 }} />
                 <MenuItem onClick={handleClear}>Clear</MenuItem>
-                <MenuItem onClick={handleSearch}>Uygula</MenuItem>
+                <MenuItem onClick={handleSearch}>Apply</MenuItem>
             </Menu></>
     )
 }

@@ -11,7 +11,6 @@ type Props = {
         Poster: string,
         imdbID: string
     }
-    // children: JSX.Element,
 };
 
 export const Poster = ({ movie }: Props) => {
@@ -25,6 +24,7 @@ export const Poster = ({ movie }: Props) => {
     return (
         <Paper
             onClick={movieDetail}
+            role={"poster"}
             sx={{
                 borderRadius: '10px',
                 padding: '5px',
@@ -32,10 +32,11 @@ export const Poster = ({ movie }: Props) => {
                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
             }} >
             <Paper
+                role={"image"}
                 sx={{
                     height: 200,
                     width: 160,
-                    backgroundImage: `url(${movie.Poster !== "N/A" ? movie.Poster : 'https://via.placeholder.com/150'})`,
+                    backgroundImage: `url(${movie.Poster === "N/A" || !movie.Poster ? 'https://via.placeholder.com/150' : movie.Poster})`,
                     backgroundSize: '100% 100%',
                 }}
             >

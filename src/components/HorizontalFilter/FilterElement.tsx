@@ -18,12 +18,12 @@ export const FilterElement = ({ selectValue }: Props) => {
         <MenuItem>
             <Box sx={{ minWidth: 120, }}>
                 <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Tür</InputLabel>
+                    <InputLabel id={selectValue.title.toLowerCase() + "-simple-select-label"}>{selectValue.title}</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId={selectValue.title.toLowerCase() + "-simple-select-label"}
+                        id={selectValue.title.toLowerCase() + "-simple-select"}
                         value={selectValue.selected}
-                        label="Tür"
+                        label={selectValue.title}
                         onChange={selectValue.handleChange}
                     >
                         {selectValue.selectList.map((element, index) => (
